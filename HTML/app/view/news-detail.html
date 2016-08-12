@@ -1,0 +1,170 @@
+<div class="bv-news-detail" layout="column" ng-controller="newsDetailCtrl" layout-fill>
+    <md-toolbar class="bv-content-head md-table-toolbar md-default">
+        <div class="md-toolbar-tools">
+            <h2>
+			<span>News Detail</span>
+			</h2>
+        </div>
+    </md-toolbar>
+    <md-content class="bv-content-body" flex>
+        
+        <form id="newsForm" name="newsForm" ng-submit="ctrl.saveNews()">
+            <!--<div layout="row">
+				<div flex> <md-progress-linear md-mode="indeterminate" ng-hide="!ctrl.disabled"></md-progress-linear></div>
+			</div> -->
+
+            <div class="bv-input-container bv-date">
+                <label class="bv-label">Date</label>
+                <md-datepicker ng-model="ctrl.news.newsDate" md-placeholder="Date"></md-datepicker>
+            </div>
+
+            <md-input-container class="md-block">
+                <label>News Title</label>
+                <input name="newsTitle" ng-model="ctrl.news.title" required="required" maxlength="300" />
+                <div ng-messages="newsForm.newsTitle.$error">
+                    <bv-input-error></bv-input-error>
+                </div>
+            </md-input-container>
+
+
+            <md-input-container class="md-block">
+                <label>News Summary</label>
+                <input name="newsSummary" ng-model="ctrl.news.summary" required="required" ng-disabled="ctrl.disabled" maxlength="300" />
+                <div ng-messages="newsForm.newsSummary.$error">
+                    <bv-input-error></bv-input-error>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>News Convention</label>
+                <md-select ng-model="selectedConventions" md-on-close="clearSearchConventionTerm()" data-md-container-class="selectdemoSelectHeader" multiple>
+                    <md-select-header class="demo-select-header" style="height:48px; display:flex; width:auto; padding: 0 20px;">
+                        <input style="outline:none;padding:0; border:0;width:100%; height:100%;" ng-model="searchConvention" type="search" placeholder="Search for a Convention.." class="demo-header-searchbox _md-text">
+                    </md-select-header>
+                    <md-optgroup label="conventions">
+                        <md-option ng-value="convention" ng-repeat="convention in conventions |
+              filter:searchConvention">{{convention}}</md-option>
+                    </md-optgroup>
+                </md-select>
+                 <div>&nbsp;</div>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>News Flag</label>
+                <md-select ng-model="selectedFlags" md-on-close="clearSearchFlagTerm()" data-md-container-class="selectdemoSelectHeader" multiple>
+                    <md-select-header class="demo-select-header" style="height:48px; display:flex; width:auto; padding: 0 20px;">
+                        <input style="outline:none;padding:0; border:0;width:100%; height:100%;" ng-model="searchFlag" type="search" placeholder="Search for a Flag.." class="demo-header-searchbox _md-text">
+                    </md-select-header>
+                    <md-optgroup label="flags">
+                        <md-option ng-value="flag" ng-repeat="flag in flags |
+              filter:searchFlag">{{flag}}</md-option>
+                    </md-optgroup>
+                </md-select>
+                 <div>&nbsp;</div>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Ship Type</label>
+                <md-select ng-model="selectedShips" md-on-close="clearSearchShipTerm()" data-md-container-class="selectdemoSelectHeader" multiple>
+                    <md-select-header class="demo-select-header" style="height:48px; display:flex; width:auto; padding: 0 20px;">
+                        <input style="outline:none;padding:0; border:0;width:100%; height:100%;" ng-model="searchShip" type="search" placeholder="Search for a Ship.." class="demo-header-searchbox _md-text">
+                    </md-select-header>
+                    <md-optgroup label="ships">
+                        <md-option ng-value="ship" ng-repeat="ship in ships |
+              filter:searchShip">{{ship}}</md-option>
+                    </md-optgroup>
+                </md-select>
+                 <div>&nbsp;</div>
+            </md-input-container>
+
+
+            <!-- <md-input-container class="md-block">
+                <label>News Convention</label>
+                <md-select ng-model="ctrl.news.conventions" ng-model-options="{trackBy: '$value.id'}" md-on-close="" data-md-container-class="selectdemoSelectHeader" multiple ng-disabled="ctrl.disabled">
+                    <md-optgroup label="convention">
+                        <md-option ng-value="convention" ng-repeat="convention in ctrl.conventionList">{{convention.title}}</md-option>
+                    </md-optgroup>
+                </md-select>
+                <div>&nbsp;</div>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>News Flag</label>
+                <md-select ng-model="ctrl.news.flags" ng-model-options="{trackBy: '$value.id'}" md-on-close="" data-md-container-class="selectdemoSelectHeader" multiple ng-disabled="ctrl.disabled">
+                    <md-optgroup label="Flag">
+                        <md-option ng-value="flag" ng-repeat="flag in ctrl.flagList">{{flag.title}}</md-option>
+                    </md-optgroup>
+                </md-select>
+                <div>&nbsp;</div>
+            </md-input-container>
+
+
+            <md-input-container class="md-block">
+                <label>Ship Type</label>
+                <md-select ng-model="ctrl.news.shipTypes" ng-model-options="{trackBy: '$value.id'}" md-on-close="" data-md-container-class="selectdemoSelectHeader" multiple ng-disabled="ctrl.disabled">
+                    <md-optgroup label="Ship Type">
+                        <md-option ng-value="shipType" ng-repeat="shipType in ctrl.shipTypeList">{{shipType.title}}</md-option>
+                    </md-optgroup>
+                </md-select>
+                <div>&nbsp;</div>
+            </md-input-container> -->
+
+            <!--
+            <md-input-container class="md-block">
+                <bv-input-richtext label="{{'news.detail.contents' | }}" ng-model="ctrl.news.content"></bv-input-richtext>
+            </md-input-container>
+-->
+
+            <div layout="row" class="bv-input-container">
+                <div flex="20">
+                    <label class="bv-label">Active News Detail</label>
+                </div>
+                <div flex="70" layout="row">
+                    <md-switch class="bv-switch" ng-model="ctrl.news.active" aria-label="Checkbox 1" ng-disabled="ctrl.disabled"></md-switch>
+                    <div flex></div>
+                </div>
+                <div flex></div>
+            </div>
+
+            <div layout="row" class="bv-input-container">
+                <div flex="20">
+                    <label class="bv-label">News Attachments</label>
+                </div>
+                <div flex="70">
+                    <input name="fileList" id="fileList" type="file" multiple="ture" bv-file-model="fileList" ng-disabled="ctrl.disabled" />
+                </div>
+                <div flex></div>
+            </div>
+
+            <div layout="row" class="bv-input-container bv-attatchment-container">
+                <div flex="20">
+                    <label class="bv-label"> Attachment List</label>
+                </div>
+                <div flex="70">
+                    <div layout="row" class="bv-attatchment-item" data-ng-repeat="attachment in ctrl.news.attachments track by $index">
+                        <md-button class="md-fab md-mini md-raised" data-ng-click="attachment.deleted = !attachment.deleted" ng-disabled="ctrl.disabled">
+                            <md-icon ng-if="!attachment.deleted" md-svg-src="img/icons/bin.svg" alt="Delete">
+                                <md-tooltip>{{'news.detail.deleteMsg' | }}</md-tooltip>
+                            </md-icon>
+                            <md-icon ng-if="attachment.deleted" md-svg-src="img/icons/undo.svg" alt="Undelete">
+                                <md-tooltip>{{'news.detail.undoMsg' | }}</md-tooltip>
+                            </md-icon>
+                        </md-button>
+                        <md-button class="bv-attatchment-link" id="{{$index}}" data-ng-click="ctrl.downloadAttachment(attachment.fileName,$index,$event);$event.stopPropagation()" ng-disabled="ctrl.disabled">{{ctrl.trimRandomString(attachment.fileName)}}</md-button>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </md-content>
+    <footer class="bv-content-footer">
+        <div layout="box" layout-align="end end">
+            <md-button class="md-raised" ng-disabled="ctrl.disabled" ui-sref="root.news">
+                back
+            </md-button>
+            <md-button class="md-raised md-accent" data-ng-click="" ng-disabled="ctrl.disabled" ng-hide="ctrl.$stateParams.id == -1">
+                Delete
+                <md-tooltip>Delete this news</md-tooltip>
+            </md-button>
+            <md-button class="md-raised md-primary" type="submit" form="newsForm">
+                Save
+            </md-button>
+        </div>
+    </footer>
+</div>

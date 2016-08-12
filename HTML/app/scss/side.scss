@@ -1,0 +1,109 @@
+//Local Variables
+$sidenavopen: 240px;
+$sidenavclose: 60px;
+.bv-left-sidenav {
+    background: $grey url(#{$img-path}/sidenav-bv-logo.png) no-repeat;
+    background-position: center bottom 32px;
+    font-size: 16px;
+    font-weight: 500;
+    overflow-x: hidden;
+    overflow-y: auto;
+    + .bv-left-sidenav {
+        //one additional sidenav is generating at run time by Angular material
+        display: none !important;
+    }
+    &.bv-left-sidenav-open {
+        width: $sidenavopen;
+        transition: width 25s;
+        -webkit-transition: width .25s;
+        -moz-transition: width 0.25s;
+        -ms-transition: width 0.25s;
+        -o-transition: width 0.25s;
+    }
+    &.bv-left-sidenav-close {
+        width: $sidenavclose;
+        overflow-x: hidden;
+        overflow-y: auto;
+        transition: all 0.25s;
+        -webkit-transition: width .25s;
+        -moz-transition: width 0.25s;
+        -ms-transition: width 0.25s;
+        -o-transition: width 0.25s;
+        background-image: url(#{$img-path}/sidenav-bv-logo-small.png);
+        .bv-left-submenu {
+            md-list-item {
+                &>.md-button {
+                    padding-left: 16px;
+                }
+            }
+        }
+    }
+    md-content {
+        background: none;
+        min-width: $sidenavopen;
+        md-list {
+            padding: 0;
+            overflow: hidden;
+            md-list-item {
+                background: $grey-light;
+                color: $grey-dark;
+                &:hover,
+                &.bv-active {
+                    background: $red !important;
+                    color: $white;
+                    .md-button {
+                        background: none;
+                        position: relative;
+                    }
+                    md-icon {
+                        color: $white;
+                    }
+                }
+                .md-list-item-inner {
+                    white-space: nowrap;
+                }
+                md-icon {
+                    color: $grey-dark;
+                    margin-right: 20px !important;
+                }
+                .md-button {
+                    margin: 0;
+                }
+                .bv-collapse-icon {
+                    margin: 0px 0 0 0 !important;
+                    width: 16px;
+                    height: 16px;
+                    transition: transform 0.25s ease;
+                    -webkit-transition: transform 0.25s ease;
+                    -moz-transition: transform 0.25s ease;
+                    -ms-transition: transform 0.25s ease;
+                    -o-transition: transform 0.25s ease;
+                }
+                .bv-expend-icon {
+                    margin-top: -5px !important;
+                    transform: rotate(180deg)
+                }
+            }
+            & > md-list-item {
+                background: $white;
+                margin-bottom: 1px;
+            }
+            .bv-left-submenu {
+                max-height: 200px; // CSS3 animation for slide up and down
+                transition: all .25s linear;
+                -webkit-transition: all .25s linear;
+                -moz-transition: all .25s linear;
+                -ms-transition: all .25s linear;
+                -o-transition: all .25s linear;
+                &.ng-hide {
+                    max-height: 0;
+                }
+                md-list-item {
+                    &>.md-button {
+                        padding-left: $sidenavclose;
+                    }
+                }
+            }
+        }
+    }
+}

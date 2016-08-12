@@ -1,0 +1,29 @@
+.bv-header {
+    overflow: hidden;
+    .md-toolbar-tools {
+        padding-right: 0;
+    }
+    .bv-app-logo {
+        font-size: 26px;
+        color: $white;
+    }
+    .bv-logo-brand {
+        height: 64px;
+        background: $white none repeat scroll 0 0;
+        position: relative;
+        z-index: 10;
+        padding: 5px 10px 0 0;
+    }
+    .bv-logo-brand::after {
+        border-right: 20px solid $white;
+        border-top: 70px solid transparent;
+        content: "";
+        display: block;
+        left: -20px;
+        position: absolute;
+        top: 0;
+    }
+    md-icon {
+        color: rgba(255, 255, 255, 1) !important;
+    }
+}

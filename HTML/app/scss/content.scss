@@ -1,0 +1,29 @@
+.bv-content {
+    overflow-y: auto;
+    .bv-content-head {
+        padding: 6px 0;
+        .md-toolbar-tools {
+            h2 {
+                color: $red;
+                font-weight: 500;
+            }
+        }
+    }
+    .bv-search-container {
+        padding: 0 24px;
+    }
+    .bv-content-body {
+        & > * {
+            padding: 0 24px;
+        }
+    }
+    .bv-form-container {
+        padding-bottom: 24px;
+    }
+    .bv-content-footer {
+        & > div {
+            border-top: 1px solid rgba($black, 0.12);
+            padding: 6px 24px;
+        }
+    }
+}

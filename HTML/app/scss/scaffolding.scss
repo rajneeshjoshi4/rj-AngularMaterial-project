@@ -1,0 +1,26 @@
+body {
+    font-size: 14px;
+}
+
+*,
+*:focus {
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.bv-primary-color {
+    color: $red;
+}
+
+md-tooltip {
+    font-size: 12px;
+}
+
+

@@ -1,0 +1,40 @@
+.bv-login {
+    .bv-login-box {
+        max-width: 90%;
+        width: 350px;
+        position: relative;
+        .bv-login-shadow {
+            display: block;
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            bottom: -10px;
+            right: -10px;
+            background: #000;
+            opacity: .2;
+            -ms-filter: "alpha(opacity=20)";
+            z-index: 0
+        }
+        .bv-forgot-password {
+            padding-top: 20px;
+            text-align: right;
+        }
+        .bv-submit-button {
+            padding-top: 10px;
+            .md-button {
+                min-width: 140px;
+            }
+        }
+    }
+    .bv-bg-cover {
+        position: fixed;
+        margin: 0px;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-image: url(#{$img-path}/login-landscape.jpg);
+        background-size: cover;
+        background-position: center bottom;
+    }
+}

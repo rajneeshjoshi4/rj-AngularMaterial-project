@@ -1,0 +1,96 @@
+/* Default buttons */
+
+.md-button {
+    border-radius: 50px;
+}
+
+.bv-dialog-form {
+    padding: 10px 30px;
+}
+
+.md-chips {
+    font-size: 14px;
+}
+
+.bv-date {
+    padding-bottom: 12px;
+    position: relative;
+    label {
+        position: absolute;
+        top: -16px;
+        left: 2px;
+    }
+    .md-datepicker-button {
+        margin: 0 0 0 -8px;
+    }
+}
+
+.bv-input-container,
+md-chips {
+    margin: 18px 0;
+}
+
+
+.bv-gray-container {
+    background: #f5f5f5;
+}
+
+
+/* All input label on focus */
+
+md-input-container.md-input-focused label,
+md-input-container.md-input-has-value label {
+    font-size: 18px;
+}
+
+.bv-label {
+    color: rgba($black, 0.54);
+}
+
+
+/* All dialogs */
+
+md-dialog {
+    border-radius: 0px !important;
+    md-toolbar {
+        min-height: 46px;
+        .md-toolbar-tools {
+            height: 46px;
+        }
+    }
+    .md-dialog-content {
+        padding-top: 0;
+        .md-dialog-content-body {
+            margin-top: 24px;
+        }
+        .md-title {
+            font-weight: 400;
+            letter-spacing: 0.005em;
+            margin: 0 -24px;
+            background: $black;
+            color: rgba($white, 0.87);
+            padding: 10px 24px;
+        }
+    }
+    md-dialog-actions {
+        padding: 0 12px;
+    }
+    .md-toolbar-tools,
+    .md-title {
+        font-size: 18px;
+    }
+}
+
+md-switch {
+    &.md-checked {
+        .md-thumb {
+            background-color: $success !important;
+        }
+        .md-bar {
+            background-color: rgba($success, 0.5) !important;
+        }
+    }
+    &.bv-switch {
+        margin: 0;
+    }
+}

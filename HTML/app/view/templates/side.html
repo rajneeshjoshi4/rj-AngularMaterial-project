@@ -1,0 +1,45 @@
+<md-content>
+    <md-list>
+        <md-list-item ui-sref="root.home" ng-class="$state.current.name == 'root.home'?'bv-active':''">
+            <md-icon md-svg-src="img/icons/home.svg" aria-label="Home">
+                <md-tooltip md-direction="right">Home</md-tooltip>
+            </md-icon>
+            <p>Home</p>
+        </md-list-item>
+        <md-list-item ui-sref="root.news" ng-class="$state.current.name == 'root.news'?'bv-active':''">
+            <md-icon md-svg-src="img/icons/newspaper.svg">
+                <md-tooltip md-direction="right">News</md-tooltip>
+            </md-icon>
+            <p>News</p>
+        </md-list-item>
+        <md-list-item>
+            <div layout="row" flex ng-click="isRefClose = !isRefClose" md-ink-ripple>
+                <md-icon md-svg-src="img/icons/tools.svg">
+                    <md-tooltip md-direction="right">Referential</md-tooltip>
+                </md-icon>
+                <p flex>Referential</p>
+                <md-icon class="md-secondary" ng-class="isRefClose?'bv-collapse-icon bv-expend-icon':'bv-collapse-icon'" md-svg-src="img/icons/chevron-up.svg"></md-icon>
+            </div>
+        </md-list-item>
+        <div id="submenu_referential" class="bv-left-submenu" ng-show="!isRefClose" ng-class="$state.current.name == 'root.ship'?'bv-active':''">
+            <md-list-item ui-sref="root.ship" ng-class="$state.current.name == 'root.ship'?'bv-active':''">
+                <md-icon md-svg-src="img/icons/ship.svg">
+                    <md-tooltip md-direction="right">ShipType</md-tooltip>
+                </md-icon>
+                <p>ShipType</p>
+            </md-list-item>
+            <md-list-item ui-sref="root.flag" ng-class="$state.current.name == 'root.flag'?'bv-active':''">
+                <md-icon md-svg-src="img/icons/flag.svg">
+                    <md-tooltip md-direction="right">Flag</md-tooltip>
+                </md-icon>
+                <p>Flag</p>
+            </md-list-item>
+            <md-list-item ui-sref="root.convention" ng-class="$state.current.name == 'root.convention'?'bv-active':''">
+                <md-icon md-svg-src="img/icons/graduate.svg">
+                    <md-tooltip md-direction="right">Convention</md-tooltip>
+                </md-icon>
+                <p>Convention</p>
+            </md-list-item>
+        </div>
+    </md-list>
+</md-content>

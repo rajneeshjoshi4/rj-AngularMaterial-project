@@ -1,0 +1,180 @@
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="../../node_modules/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="../css/app.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+
+    </style>
+
+
+</head>
+
+<body ng-app="MyApp" ng-cloak>
+
+    <div layout="column" layout-fill ng-controller="AppCtrl">
+        <div>
+            <md-toolbar class="bv-header md-accent">
+                <div class="md-toolbar-tools">
+                    <md-button class="md-icon-button" aria-label="Side Panel" ng-click="openSideNavPanel()">
+                        <md-tooltip>Side Panel</md-tooltip>
+                        <md-icon md-font-set="material-icons">menu</md-icon>
+                    </md-button>
+                    <h2 class="bv-app-logo">
+          <span>VariSTAR</span>
+                    
+        </h2>
+                    <span flex></span>
+
+                    <md-menu-bar class="bv-right-head-menu" layout="row">
+                        <div class="bv-head-welcome" flex>Welcome <strong>Rajenesh Joshi</strong></div>
+                        <md-menu>
+                            <button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu()">
+                                <md-icon md-svg-src="../img/icons/user.svg" class="s24" aria-label="User"></md-icon>
+                            </button>
+                            <md-menu-content>
+
+                                <md-menu-item class="md-indent">
+                                    <md-icon md-svg-src="../img/icons/power-off.svg" class="s24" aria-label="Poweroff"></md-icon>
+                                    <md-button ng-click="">
+                                        Log Out
+
+                                    </md-button>
+
+                                </md-menu-item>
+                            </md-menu-content>
+                        </md-menu>
+
+                    </md-menu-bar>
+
+
+                    <div class="bv-logo-brand"><img src="../img/navbar-bv-logo.png" /></div>
+                </div>
+            </md-toolbar>
+        </div>
+        <div layout="row" flex>
+            <md-sidenav layout="column" ng-class="expendSideNavPanel?'bv-left-sidenav-open':'bv-left-sidenav-close'" class="md-sidenav-left bv-left-sidenav" md-whiteframe="4" md-component-id="left" md-is-locked-open="true">
+
+
+
+                <md-content>
+                    <md-list>
+                        <md-list-item>
+                            <md-icon md-svg-src="../img/icons/home.svg" aria-label="Home">
+                                <md-tooltip md-direction="right">Home</md-tooltip>
+                            </md-icon>
+                            <p>Home</p>
+                        </md-list-item>
+                        <md-list-item>
+                            <md-icon md-svg-src="../img/icons/newspaper.svg">
+                                <md-tooltip md-direction="right">News</md-tooltip>
+                            </md-icon>
+                            <p>News</p>
+                        </md-list-item>
+                        <md-list-item>
+                            <div layout="row" flex ng-click="isRefClose = !isRefClose" md-ink-ripple>
+                                <md-icon md-svg-src="../img/icons/tools.svg">
+                                    <md-tooltip md-direction="right">Referential</md-tooltip>
+                                </md-icon>
+                                <p flex>Referential</p>
+                                <md-icon class="md-secondary" ng-class="isRefClose?'bv-collapse-icon bv-expend-icon':'bv-collapse-icon'" md-svg-src="../img/icons/chevron-up.svg"></md-icon>
+                            </div>
+                        </md-list-item>
+                        <div id="submenu_referential" class="bv-left-submenu" ng-show="!isRefClose">
+                            <md-list-item>
+                                <md-icon md-svg-src="../img/icons/file-zip.svg">
+                                    <md-tooltip md-direction="right">ShipType</md-tooltip>
+                                </md-icon>
+                                <p>ShipType</p>
+                            </md-list-item>
+                            <md-list-item>
+                                <md-icon md-svg-src="../img/icons/flag.svg">
+                                    <md-tooltip md-direction="right">Flag</md-tooltip>
+                                </md-icon>
+                                <p>Flag</p>
+                            </md-list-item>
+                            <md-list-item>
+                                <md-icon md-svg-src="../img/icons/graduate.svg">
+                                    <md-tooltip md-direction="right">Convention</md-tooltip>
+                                </md-icon>
+                                <p>Convention</p>
+                            </md-list-item>
+                        </div>
+                    </md-list>
+                </md-content>
+
+
+            </md-sidenav>
+            <div layout="column" flex id="content">
+                <md-content flex layout-padding class="fmd-content">
+                    <h1>Heading 1</h1>
+                    <p>Test paragraph</p>
+                    <p>
+                        <md-icon> face </md-icon>
+                        <md-icon md-font-set="material-icons"> face </md-icon>
+                        <md-icon md-font-set="material-icons">favorite</md-icon>
+                    </p>
+                    <p>Lorem ipsum dolor sit amet, ne quod novum mei. Sea omnium invenire mediocrem at, in lobortis conclusionemque nam. Ne deleniti appetere reprimique pro, inani labitur disputationi te sed. At vix sale omnesque, id pro labitur reformidans accommodare, cum labores honestatis eu. Nec quem lucilius in, eam praesent reformidans no. Sed laudem aliquam ne.</p>
+                    <p>
+                        Facete delenit argumentum cum at. Pro rebum nostrum contentiones ad. Mel exerci tritani maiorum at, mea te audire phaedrum, mel et nibh aliquam. Malis causae equidem vel eu. Noster melius vis ea, duis alterum oporteat ea sea. Per cu vide munere fierent.
+                    </p>
+                    <p>
+                        Ad sea dolor accusata consequuntur. Sit facete convenire reprehendunt et. Usu cu nonumy dissentiet, mei choro omnes fuisset ad. Te qui docendi accusam efficiantur, doming noster prodesset eam ei. In vel posse movet, ut convenire referrentur eum, ceteros singulis intellegam eu sit.
+                    </p>
+                    <p>
+                        Sit saepe quaestio reprimique id, duo no congue nominati, cum id nobis facilisi. No est laoreet dissentias, idque consectetuer eam id. Clita possim assueverit cu his, solum virtute recteque et cum. Vel cu luptatum signiferumque, mel eu brute nostro senserit. Blandit euripidis consequat ex mei, atqui torquatos id cum, meliore luptatum ut usu. Cu zril perpetua gubergren pri. Accusamus rationibus instructior ei pro, eu nullam principes qui, reque justo omnes et quo.
+                    </p>
+                    <p>
+                        Sint unum eam id. At sit fastidii theophrastus, mutat senserit repudiare et has. Atqui appareat repudiare ad nam, et ius alii incorrupte. Alii nullam libris his ei, meis aeterno at eum. Ne aeque tincidunt duo. In audire malorum mel, tamquam efficiantur has te.
+                    </p>
+                    <p>
+                        Sit saepe quaestio reprimique id, duo no congue nominati, cum id nobis facilisi. No est laoreet dissentias, idque consectetuer eam id. Clita possim assueverit cu his, solum virtute recteque et cum. Vel cu luptatum signiferumque, mel eu brute nostro senserit. Blandit euripidis consequat ex mei, atqui torquatos id cum, meliore luptatum ut usu. Cu zril perpetua gubergren pri. Accusamus rationibus instructior ei pro, eu nullam principes qui, reque justo omnes et quo.
+                    </p>
+                    <p>
+                        Sint unum eam id. At sit fastidii theophrastus, mutat senserit repudiare et has. Atqui appareat repudiare ad nam, et ius alii incorrupte. Alii nullam libris his ei, meis aeterno at eum. Ne aeque tincidunt duo. In audire malorum mel, tamquam efficiantur has te.
+                    </p>
+                    <p>
+                        Sit saepe quaestio reprimique id, duo no congue nominati, cum id nobis facilisi. No est laoreet dissentias, idque consectetuer eam id. Clita possim assueverit cu his, solum virtute recteque et cum. Vel cu luptatum signiferumque, mel eu brute nostro senserit. Blandit euripidis consequat ex mei, atqui torquatos id cum, meliore luptatum ut usu. Cu zril perpetua gubergren pri. Accusamus rationibus instructior ei pro, eu nullam principes qui, reque justo omnes et quo.
+                    </p>
+                    <p>
+                        Sint unum eam id. At sit fastidii theophrastus, mutat senserit repudiare et has. Atqui appareat repudiare ad nam, et ius alii incorrupte. Alii nullam libris his ei, meis aeterno at eum. Ne aeque tincidunt duo. In audire malorum mel, tamquam efficiantur has te.
+                    </p>
+                </md-content>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- Angular Material requires Angular.js Libraries -->
+    <script src="../../node_modules/angular/angular.min.js"></script>
+    <script src="../../node_modules/angular-animate/angular-animate.min.js"></script>
+    <script src="../../node_modules/angular-aria/angular-aria.min.js"></script>
+    <script src="../../node_modules/angular-messages/angular-messages.min.js"></script>
+    <script src="../../node_modules/angular-material-icons/angular-material-icons.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="../../node_modules/angular-material/angular-material.min.js"></script>
+
+    <!-- localstorage  -->
+    <script src="../../node_modules/ngstorage/ngStorage.min.js"></script>
+
+    <!-- data table  -->
+    <script src="../../node_modules/angular-material-data-table/dist/md-data-table.min.js"></script>
+
+    <!-- UI route  -->
+    <script src="../../node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+    
+    <!-- Your application bootstrap  -->
+    
+    <script src="../js/app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+//General color
+$crimson: rgb(99, 24, 38);
+$white: rgb(255, 255, 255);
+$black: rgb(0, 0, 0);
+$red: rgb(176, 0, 45);
+$yellow: rgb(206, 166, 58);
+$blueheader: #17274f;
+$orange : rgb(236, 143, 23);
+/*
+
+//grey company - 50 shades of grey
+$grey-review-background: rgb(248, 248, 248);
+$grey-notif-background: rgb(222, 220, 214);
+$report-greylight-back: rgb(242, 242, 242);
+$grey: rgb(235, 234, 230);
+$button-grey: rgb(230, 229, 224);
+$grey-subheader: rgb(221, 219, 212);
+$report-grey-back: rgb(215, 213, 207);
+$background-cross: rgb(205, 202, 194);
+$grey-button-review: rgb(191, 188, 176);
+$greyText: rgb(165, 165, 165);
+$grey-separator: rgb(166, 166, 166);
+$grey-myprofile: rgb(161, 161, 161);
+$button-text: rgb(143, 140, 132);
+$grey-formular: rgb(122, 119, 119);
+$greyBlockSplit: rgb(102, 102, 102);
+$grey-myfleet-text: rgb(95, 95, 95);
+$grey-text-title: rgb(65, 65, 65);
+$greyBlock: rgb(65, 65, 65);
+$grey-news: rgb(188, 186, 179);
+$grey-header-profile: rgb(138, 138, 138);
+$grey-progress-bar: rgb(154, 154, 154);
+$grey-disabled: rgb(130, 130, 130);
+
+$greyrighttop: rgb(223, 222, 216);
+$greyrightbot: rgb(215, 213, 207);
+
+//Button color
+$button-red: rgb(176, 0, 45);
+$button-blue: rgb(30, 30, 30);
+
+//input
+$border-red: rgb(221, 23, 23);
+$login-red: rgb(224, 14, 14);
+$blackred: rgb(99, 24, 38);
+
+// puce color
+$puce-black     : #1e1e1e;
+$puce-green     : #7bbf2a;
+$puce-orange    : #ec8f17;
+$puce-red       : #cc0000;
+$puce-brown     : #873D06;
+$puce-violet    : violet;
+$puce-darkblue  : darkblue;
+$puce-yellow    : yellow;
+$puce-lightblue : lightblue;
+$puce-pink      : pink;
+$puce-grey      : #ebeae6;
+
+//text
+$red-text: rgb(118, 37, 51);
+$yellow-tablette-ac: rgb(206, 166, 58);
+
+// ---
+$gradian-black: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%);
+
+$colors: (
+        "crimson"                 : #{$crimson},
+        "white"                   : #{$white},
+        "black"                   : #{$black},
+        "red"                     : #{$red},
+        "yellow "                 : #{$yellow},
+        "blueheader"              : #{$blueheader},
+        "grey-notif-background "  : #{$grey-notif-background},
+        "report-greylight-back "  : #{$report-greylight-back},
+        "grey"                    : #{$grey},
+        "button-grey"             : #{$button-grey},
+        "grey-subheader "         : #{$grey-subheader},
+        "report-grey-back "       : #{$report-grey-back},
+        "background-cross "       : #{$background-cross},
+        "grey-button-review "     : #{$grey-button-review},
+        "greyText"                : #{$greyText},
+        "grey-separator "         : #{$grey-separator},
+        "grey-myprofile "         : #{$grey-myprofile},
+        "button-text "            : #{$button-text},
+        "grey-formular "          : #{$grey-formular},
+        "greyBlockSplit "         : #{$greyBlockSplit},
+        "grey-myfleet-text "      : #{$grey-myfleet-text},
+        "grey-text-title "        : #{$grey-text-title},
+        "greyBlock"               : #{$greyBlock},
+        "grey-news"               : #{$grey-news},
+        "grey-header-profile "    : #{$grey-header-profile},
+        "grey-progress-bar "      : #{$grey-progress-bar},
+        "button-red"              : #{$button-red},
+        "button-blue"             : #{$button-blue},
+        "border-red "             : #{$border-red},
+        "login-red "              : #{$login-red},
+        "blackred "               : #{$blackred},
+        "puce-black "             : #{$puce-black},
+        "puce-green "             : #{$puce-green},
+        "puce-orange "            : #{$puce-orange},
+        "puce-red "               : #{$puce-red},
+        "puce-brown "             : #{$puce-brown},
+        "puce-violet "            : #{$puce-violet},
+        "puce-darkblue "          : #{$puce-darkblue},
+        "puce-yellow "            : #{$puce-yellow},
+        "puce-lightblue "         : #{$puce-lightblue},
+        "puce-pink "              : #{$puce-pink},
+        "red-text "               : #{$red-text},
+        "yellow-tablette-ac "     : #{$yellow-tablette-ac},
+        "gradian-black"           : #{$gradian-black},
+        "greyrighttop"            : #{$greyrighttop},
+        "greyrightbot"            : #{$greyrightbot},
+        "orange"                  : #{$orange}
+);
+
+@each $color, $value in $colors {
+    .color-#{$color} {
+        color: #{$value} !important;
+    }
+
+    .color-bg-#{$color} {
+        background-color: #{$value} !important;
+    }
+
+    .color-border-#{$color} {
+        border-color: #{$value} !important;
+    }
+}
+*/
