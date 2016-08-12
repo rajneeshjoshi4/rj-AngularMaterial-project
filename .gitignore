@@ -47,3 +47,7 @@ Temporary Items
 .apdisk
 node_modules/
 HTML/dist/
+HTML/app/css/vendors.min.css
+HTML/app/js/vendors.min.js
+HTML/app/js/app.min.js
+HTML/app/css/app.min.css
