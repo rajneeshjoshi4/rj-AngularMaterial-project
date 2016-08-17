@@ -17,21 +17,27 @@ var runSequence = require('run-sequence'); //Run task in order
 var browserify = require('browserify'); //allows us to write node.js-style modules that compile for use in the browser
 //var babel = require('babelify');
 var _ = require('underscore');
-var buffer = require('vinyl-buffer');
-var source = require('vinyl-source-stream');
-var transform = require('vinyl-transform');
+var buffer = require('vinyl-buffer'); //gulp-uglify dosen't support stream, so you should convert stream to buffer using vinyl-buffer
+var source = require('vinyl-source-stream');// convert the readable stream you get from browserify into a vinyl stream that is what gulp is expecting to get.
+var transform = require('vinyl-transform'); 
 var ngAnnotate = require('gulp-ng-annotate'); //automated dependency injection, by giving output with the $inject annotation and become minification-safe
 
+var bases = {
+        app: './html/app/',
+        dist: './html/dist/',
+    },
+    paths = {
+        scss: ['scss/**/*.scss'],
+        js: ['js/**/*.js', '!js/*.min.js'], //Select all js files expect minifyed js. Otherwise watch will stuck in loop
+        htmlindex: ['index.html'],
+        html: ['view/*.html'],
+        htmltemplates: ['view/templates/*.html'],
+        img: 'img/*.*',
+        svg: 'img/icons/*.svg',
+        livereloadsource: ['**/*.min.css', '**/*.min.js', '**/*.html'] // List of files, on which reload works while any change. watch much be run
+    };
 
-var paths = {
-    scss: ['./html/app/scss/**/*.scss'],
-    js: './html/app/js/**/*.js',
-    htmlindex: './html/app/index.html',
-    html: './html/app/view/*.html',
-    htmltemplates: './html/app/view/templates/*.html',
-    img: './html/app/img/*.*',
-    svg: './html/app/img/icons/*.svg'
-};
+//allSources = paths.scss.concat(paths.js).concat(paths.htmlindex).concat(paths.html).concat(paths.htmltemplates);
 
 // If true it allow you to not minify your html, css, js
 var debug = false;
@@ -45,7 +51,7 @@ gulp.task('copyNpmDependenciesAtDifferentFolder', function() {
 */
 
 gulp.task("cleanfolder", function () {
-    return gulp.src('html/dist', {
+    return gulp.src(bases.dist, {
             read: false
         })
         .pipe(clean());
@@ -53,7 +59,7 @@ gulp.task("cleanfolder", function () {
 
 gulp.task("connect", function () {
     var b = connect.server({
-        root: ["HTML/dist"],
+        root: ['HTML/dist'],
         port: 8282,
         base: "http://localhost",
         livereload: true
@@ -71,7 +77,9 @@ gulp.task("open", ["connect"], function () {
 });
 
 gulp.task('scss', function () {
-    var b = gulp.src(paths.scss)
+    var b = gulp.src(paths.scss, {
+            cwd: bases.app
+        })
         .pipe(order([
             "variables.scss",
             "common.scss",
@@ -86,8 +94,8 @@ gulp.task('scss', function () {
         b = b.pipe(cleanCSS());
     }
     return b
-        .pipe(gulp.dest('./html/dist/css'))
-        .pipe(gulp.dest('./html/app/css'));
+        .pipe(gulp.dest('css', {cwd: bases.dist}))
+        .pipe(gulp.dest('css', {cwd: bases.app}));
 });
 
 gulp.task('vendors-css', function () {
@@ -101,13 +109,15 @@ gulp.task('vendors-css', function () {
     }
     return b
         .pipe(concat('vendors.min.css'))
-        .pipe(gulp.dest('./html/dist/css'))
-        .pipe(gulp.dest('./html/app/css'));
+        .pipe(gulp.dest('css', {cwd: bases.dist}))
+        .pipe(gulp.dest('css', {cwd: bases.app}));
 });
 
 
 gulp.task('htmlindex', function () {
-    var b = gulp.src(paths.htmlindex);
+    var b = gulp.src(paths.htmlindex, {
+        cwd: bases.app
+    });
     if (!debug) {
         b = b.pipe(htmlmin({
             collapseWhitespace: true
@@ -115,11 +125,13 @@ gulp.task('htmlindex', function () {
     }
     return b
         .pipe(flatten())
-        .pipe(gulp.dest('./html/dist'));
+        .pipe(gulp.dest(bases.dist));
 });
 
 gulp.task('html', function () {
-    var b = gulp.src(paths.html);
+    var b = gulp.src(paths.html, {
+        cwd: bases.app
+    });
     if (!debug) {
         b = b.pipe(htmlmin({
             collapseWhitespace: true
@@ -127,11 +139,13 @@ gulp.task('html', function () {
     }
     return b
         .pipe(flatten())
-        .pipe(gulp.dest('./html/dist/view'));
+        .pipe(gulp.dest('view', {cwd: bases.dist}));
 });
 
 gulp.task('htmltemplates', function () {
-    var b = gulp.src(paths.htmltemplates);
+    var b = gulp.src(paths.htmltemplates, {
+        cwd: bases.app
+    });
     if (!debug) {
         b = b.pipe(htmlmin({
             collapseWhitespace: true
@@ -139,7 +153,7 @@ gulp.task('htmltemplates', function () {
     }
     return b
         .pipe(flatten())
-        .pipe(gulp.dest('./html/dist/view/templates'));
+        .pipe(gulp.dest('view/templates', {cwd: bases.dist}));
 });
 
 gulp.task('vendors-js', function () {
@@ -156,16 +170,16 @@ gulp.task('vendors-js', function () {
         b = b.pipe(uglify());
     }
     return b
-        .pipe(gulp.dest('./html/dist/js'))
-        .pipe(gulp.dest('./html/app/js'));
+        .pipe(gulp.dest('js', {cwd: bases.dist}))
+        .pipe(gulp.dest('js', {cwd: bases.app}));
 });
 
 gulp.task('app-js', function () {
     var b = browserify('./html/app/js/app.js'); //Browserify 's start point
 
-//    getNPMPackageIds().forEach(function (id) {
-//        b.external(id);
-//    });
+    //    getNPMPackageIds().forEach(function (id) {
+    //        b.external(id);
+    //    });
 
     //        b = b.transform('babelify', {
     //                presets: ['es2015']
@@ -178,8 +192,8 @@ gulp.task('app-js', function () {
         b = b.pipe(uglify()); // now gulp-uglify works
     }
     return b
-        .pipe(gulp.dest('./html/dist/js'))
-        .pipe(gulp.dest('./html/app/js'));
+        .pipe(gulp.dest('js', {cwd: bases.dist}))
+        .pipe(gulp.dest('js', {cwd: bases.app}));
 });
 
 /* Point to be noted:
@@ -190,36 +204,76 @@ I did same in all controller see-switchdemoCtrl
 
 
 gulp.task('copyimg', function () {
-    var b = gulp.src([paths.img, '!' + paths.svg])
+    var b = gulp.src([paths.img, '!' + paths.svg], {
+            cwd: bases.app
+        })
         .pipe(flatten());
-    return b.pipe(gulp.dest('./html/dist/img/'));
+    return b.pipe(gulp.dest('img', {cwd: bases.dist}));
 });
 
 gulp.task('copysvg', function () {
-    var b = gulp.src([paths.svg]);
+    var b = gulp.src([paths.svg], {
+        cwd: bases.app
+    });
     if (!debug) {
         b = b.pipe(svgmin())
     }
     return b.pipe(flatten())
-        .pipe(gulp.dest('./html/dist/img/icons'));
+        .pipe(gulp.dest('img/icons', {cwd: bases.dist}));
 });
+
+/* Watches task */
+gulp.task('watchcss', function () {
+    gulp.watch(paths.scss, {
+        cwd: bases.app
+    }, ['scss']);
+});
+
+gulp.task('watchjs', function () {
+    gulp.watch(paths.js, {
+        cwd: bases.app
+    }, ['app-js']);
+});
+
+gulp.task('watchhtml', function () {
+    gulp.watch(paths.htmlindex, {
+        cwd: bases.app
+    }, ['htmlindex']);
+    gulp.watch(paths.html, {
+        cwd: bases.app
+    }, ['html']);
+    gulp.watch(paths.htmltemplates, {
+        cwd: bases.app
+    }, ['htmltemplates']);
+});
+
+//livereload
+gulp.task('livereload', function () {
+    gulp.src(paths.livereloadsource, {
+            cwd: bases.app
+        })
+        .pipe(connect.reload());
+});
+//watch the file changes to trigger livereload - don't forget to run 'gulp watch' first - it is required
+gulp.task('watchlivereload', function () {
+    gulp.watch(paths.livereloadsource, {
+        cwd: bases.app
+    }, ['livereload']);
+});
+
+gulp.task('watch', ['watchcss', 'watchjs', 'watchhtml']);
+
+//gulp.task('serve', ['default', 'open']);
 
 /* gulp : Default tasks*/
 gulp.task('default', ['scss', 'htmlindex', 'html', 'htmltemplates', 'vendors-css', 'vendors-js', 'app-js', 'copyimg', 'copysvg']);
 /* gulp serve : to run the app with server*/
 
 /* First run all default task and then open the server */
-gulp.task('build', function (cb) {
-    runSequence('cleanfolder', 'default', ['open'], cb)
+gulp.task('build', function (callback) {
+    runSequence('cleanfolder', 'default', ['open'], 'watchlivereload', callback)
 });
 
-//gulp.task('serve', ['default', 'open']);
-
-gulp.task('watchcss', function () {
-    gulp.watch(paths.scss, ['default']);
-});
-
-gulp.task('watch', ['watchcss']);
 
 /**
  * Helper functions

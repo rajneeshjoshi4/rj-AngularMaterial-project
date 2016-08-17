@@ -1,4 +1,4 @@
-module.exports = /*@ngInject*/ function ($scope, $element) {
+module.exports = function ($scope, $element) {
     $scope.conventions = ['GENERAL', 'Electricity', 'EU DIRECTIVE 2005/33/EC Sulphr content of marine fuel', 'IBC Code', 'MARPOL Annex I Oil Pollution', 'MARPOL Annex VI Air Pollution'];
     $scope.searchConvention;
     $scope.clearSearchConventionTerm = function () {
@@ -22,3 +22,6 @@ module.exports = /*@ngInject*/ function ($scope, $element) {
         ev.stopPropagation();
     });
 };
+
+/*To resolve ng-annotate issue in case of minify the JS*/
+module.exports.$inject = ['$scope', '$element'];

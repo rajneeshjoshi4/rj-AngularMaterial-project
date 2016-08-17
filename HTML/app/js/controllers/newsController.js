@@ -1,4 +1,4 @@
-module.exports = /*@ngInject*/ function ($mdEditDialog, $q, $scope, $timeout) {
+module.exports = function ($mdEditDialog, $q, $scope, $timeout) {
     'use strict';
 
     $scope.selected = [];
@@ -175,3 +175,6 @@ module.exports = /*@ngInject*/ function ($mdEditDialog, $q, $scope, $timeout) {
     $scope.roShipNames = angular.copy($scope.shipNames);
     $scope.editableShipNames = angular.copy($scope.shipNames);
 };
+
+/*To resolve ng-annotate issue in case of minify the JS*/
+module.exports.$inject = ['$mdEditDialog', '$q', '$scope', '$timeout'];

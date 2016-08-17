@@ -1,8 +1,7 @@
 /**
         Setting up the States by using angular UI routes
 **/
-
-module.exports = /*@ngInject*/ function ($stateProvider, $urlRouterProvider) {
+module.exports = function ($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/');
 
@@ -94,3 +93,6 @@ module.exports = /*@ngInject*/ function ($stateProvider, $urlRouterProvider) {
 
         });
 };
+
+/*To resolve ng-annotate issue in case of minify the JS*/
+module.exports.$inject = ['$stateProvider', '$urlRouterProvider'];

@@ -1,5 +1,8 @@
-/*To resolve ng-annotate issue in case of minify the JS :-  http://chrisdoingweb.com/blog/minifying-browserified-angular-modules/*/
-module.exports = /*@ngInject*/ function ($scope, $localStorage) {
+/*
+To resolve ng-annotate issue in case of minify the JS :-  http://chrisdoingweb.com/blog/minifying-browserified-angular-modules/
+    https://github.com/olov/ng-annotate/blob/v1.0.1/README.md#explicit-annotations-with-nginject
+*/
+module.exports = function ($scope, $localStorage) {
     if (typeof $localStorage.expendSideNavPanel === 'undefined') {
         $localStorage.expendSideNavPanel = true;
     }
@@ -72,3 +75,6 @@ module.exports = /*@ngInject*/ function ($scope, $localStorage) {
     };
 
 };
+
+/*To resolve ng-annotate issue in case of minify the JS*/
+module.exports.$inject = ['$scope', '$localStorage'];

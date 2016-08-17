@@ -2,7 +2,7 @@
     Setting Angular Material's color themes
 **/
 
-module.exports = /*@ngInject*/ function ($mdThemingProvider) {
+module.exports = function ($mdThemingProvider) {
     var bvPrimary = {
         '50': '#ff3065',
         '100': '#ff1752',
@@ -51,3 +51,6 @@ module.exports = /*@ngInject*/ function ($mdThemingProvider) {
         .primaryPalette('bvPrimary')
         .accentPalette('bvAccent')
 };
+
+/*To resolve ng-annotate issue in case of minify the JS*/
+module.exports.$inject = ['$mdThemingProvider'];
