@@ -12,7 +12,9 @@ var flatten = require('gulp-flatten'); //remove or replace relative path for fil
 var plumber = require('gulp-plumber'); //Prevent pipe breaking caused by errors from gulp plugins
 var svgmin = require('gulp-svgmin'); //minifyed SVG icons
 var runSequence = require('run-sequence'); //Run task in order
+var autoprefixer = require('gulp-autoprefixer');
 /*var gnf = require('gulp-npm-files');  Copy dependencies from node_module to your project location*/
+var jshint = require('gulp-jshint');
 
 var browserify = require('browserify'); //allows us to write node.js-style modules that compile for use in the browser
 //var babel = require('babelify');
@@ -88,7 +90,12 @@ gulp.task('scss', function () {
             base: 'HTML/app/scss/'
         }))
         .pipe(concat('app.scss'))
-        .pipe(sass().on('error', sass.logError));
+        .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer({
+            browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
+            cascade: false
+        }));
+    // need to implement gulp-autoprefixer
     b = b.pipe(concat('app.min.css'));
     if (!debug) {
         b = b.pipe(cleanCSS());
