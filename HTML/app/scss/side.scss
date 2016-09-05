@@ -1,10 +1,10 @@
 //Local Variables
-$sidenavopen: 240px;
-$sidenavclose: 60px;
+$sidenavopen: 250px;
+$sidenavclose: 56px;
 .bv-left-sidenav {
     background: $grey url(#{$img-path}/sidenav-bv-logo.png) no-repeat;
     background-position: center bottom 32px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     overflow-x: hidden;
     overflow-y: auto;
@@ -47,8 +47,7 @@ $sidenavclose: 60px;
             md-list-item {
                 background: $grey-light;
                 color: $grey-dark;
-                &:hover,
-                &.bv-active {
+                &:hover {
                     background: $red !important;
                     color: $white;
                     .md-button {
@@ -64,7 +63,7 @@ $sidenavclose: 60px;
                 }
                 md-icon {
                     color: $grey-dark;
-                    margin-right: 20px !important;
+                    margin-right: 16px !important;
                 }
                 .md-button {
                     margin: 0;
@@ -89,7 +88,7 @@ $sidenavclose: 60px;
                 margin-bottom: 1px;
             }
             .bv-left-submenu {
-                max-height: 200px; // CSS3 animation for slide up and down
+                max-height: 380px; // CSS3 animation for slide up and down
                 transition: all .25s linear;
                 -webkit-transition: all .25s linear;
                 -moz-transition: all .25s linear;
